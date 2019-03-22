@@ -2,9 +2,13 @@ import numpy as np
 from pylab import *
 from PIL import Image
 import json
+
+"""Package"""
 from modules import function as fnc
 from modules.classes import Flask
 import sys
+
+"""Dictionary and JSON file"""
 day = {
     'mon': "monday",
     'tue': "tuesday",
@@ -21,12 +25,14 @@ y = json.loads(x)
 z = json.dumps(y)
 
 str_day = json.dumps(day, indent=4)
+print("====================================================================================")
 
-# f = open('test2.py', 'w')
-# sys.stdout = f
-# sys.stdout.write("print('hello')")
-# f.close()
-
+"""File handle"""
+f = open('test2.py', 'w')
+sys.stdout = f
+sys.stdout.write("print('hello')")
+f.close()
+print("====================================================================================")
 # Duyệt mảng trong numpy siêu nhanh
 """
     array = np.arange(10) cái này là tạo mảng liên tục từ 1 tới 10-1
@@ -35,34 +41,35 @@ str_day = json.dumps(day, indent=4)
 
 """
 
-# from threading import Thread
-# import time
+"""Multi Thread"""
+from threading import Thread
+import time
 
-# class myThread(Thread):
-#  	"""docstring for myThread"""
-#  	def __init__(self, name, counter, delay):
-#  		super(myThread, self).__init__()
-#  		self.name= name
-#  		self.counter=counter
-#  		self.delay=delay
+class myThread(Thread):
+ 	"""docstring for myThread"""
+ 	def __init__(self, name, counter, delay):
+ 		super(myThread, self).__init__()
+ 		self.name= name
+ 		self.counter=counter
+ 		self.delay=delay
 
-#  	def run(self):
-#  		print("san sang chay" + self.name)
-#  		while self.counter:
-#  			time.sleep(self.delay)
-#  			print("%s: %s" % (self.name, time.ctime(time.time())) )
-#  			self.counter-=1
-#  		print( "ket thuc vong lap", self.name)
+ 	def run(self):
+ 		print("san sang chay" + self.name)
+ 		while self.counter:
+ 			time.sleep(self.delay)
+ 			print("%s: %s" % (self.name, time.ctime(time.time())) )
+ 			self.counter-=1
+ 		print( "ket thuc vong lap", self.name)
 
-# try:
-#  	thread1 = myThread("thread 1", 10, 2)
-#  	thread2 = myThread("thread 2", 10, 3)
-#  	thread1.start()
-#  	thread2.start()
-# except:
-#  	print( "Error")
+try:
+ 	thread1 = myThread("thread 1", 10, 2)
+ 	thread2 = myThread("thread 2", 10, 3)
+ 	thread1.start()
+ 	thread2.start()
+except:
+ 	print( "Error")
 
-
+"""Tuple"""
 def return2value(a, b):
     return a, b
 
@@ -108,7 +115,7 @@ def rotate(img,angle):
             # elif(y0 < 0): imgOut[k,m] = 0
             # elif(y0 > row -1): imgOut[k,m] = 0
             # else:
-            imgOut[x0+300,y0+300] = img[i,j]
+            imgOut[y0+300,x0+300] = img[i,j]
     return imgOut
 
 imgOut = rotate(im,45)
